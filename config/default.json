@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://CaptainMarvel:Batman1@standevcodecamp.fesqo.mongodb.net/StanDevcodeCamp?retryWrites=true&w=majority",
+  "JWT_SECRET": "mySecret"
+}

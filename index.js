@@ -1,21 +1,16 @@
+const connectDb = require("./db/db");
+const usersRouter = require("./routes/users");
 const express = require("express");
+const cors = require("cors");
 const app = express();
-const mongoose = require("mongoose");
-const dotenv = require("dotenv");
-const userRoute = require('./routes/user')
 
-dotenv.config();
+connectDb();
 
-mongoose
-.connect(process.env.MONGO_URL)
-.then(()=> console.log("DB connection successfull!"))
-.catch((err) => {
-  console.log(err);
-});
-
+app.use(cors());
 app.use(express.json());
-app.use("/api/users", userRoute);
+app.use(`/api/users`, usersRouter);
 
-app.listen(process.env.PORT || 5001, ()=>{
-  console.log("Backend server running!");
+const port = process.env.PORT || 5001;
+app.listen(port, () => {
+  console.log(`Server started on port: ${port}`);
 });
